@@ -1,0 +1,292 @@
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+@layer base {
+  :root {
+    --gov-navy-dark: #002b49;
+    --gov-navy-primary: #0b3866;
+    --gov-navy-light: #1e4d7b;
+    --gov-blue-subtle: #e8f1f8;
+    --gov-saffron: #f37021;
+    --gov-saffron-dark: #d95e14;
+    --gov-green: #138808;
+    --gov-green-dark: #0f6c06;
+    --gov-bg-canvas: #f4f6f9;
+    --gov-bg-card: #ffffff;
+    --gov-border: #cbd5e1;
+    --gov-text-main: #1e293b;
+    --gov-text-muted: #475569;
+  }
+}
+
+/* Base styling for Indian Government Portal aesthetic */
+body {
+  background-color: #f4f6f9;
+  color: #1e293b;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans Devanagari', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Authentic Indian Tricolour Stripe Ribbon (Saffron Top, White Middle, Green Bottom) */
+.tiranga-strip {
+  height: 5px;
+  width: 100%;
+  background: linear-gradient(
+    to bottom,
+    #FF9933 0%,
+    #FF9933 33.33%,
+    #FFFFFF 33.33%,
+    #FFFFFF 66.66%,
+    #138808 66.66%,
+    #138808 100%
+  );
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.tiranga-strip-vertical {
+  width: 5px;
+  background: linear-gradient(
+    to bottom,
+    #FF9933 0%,
+    #FF9933 33.33%,
+    #FFFFFF 33.33%,
+    #FFFFFF 66.66%,
+    #138808 66.66%,
+    #138808 100%
+  );
+}
+
+.tiranga-border-top {
+  border-top: 3px solid #FF9933;
+}
+
+.tiranga-badge {
+  background: linear-gradient(to bottom, #FF9933 0%, #FF9933 33.33%, #FFFFFF 33.33%, #FFFFFF 66.66%, #138808 66.66%, #138808 100%);
+  padding: 1px;
+}
+
+/* Traditional Gov Table Styling (Old Fashion NIC Style) */
+.gov-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+  background-color: #ffffff;
+  border: 1px solid #94a3b8;
+}
+
+.gov-table th {
+  background: linear-gradient(180deg, #0b3866 0%, #002b49 100%);
+  color: #ffffff;
+  font-weight: 700;
+  text-align: left;
+  padding: 7px 10px;
+  border: 1px solid #1e4d7b;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.gov-table td {
+  padding: 7px 10px;
+  border: 1px solid #cbd5e1;
+  vertical-align: middle;
+  font-size: 0.75rem;
+}
+
+.gov-table tr:nth-child(even) {
+  background-color: #f8fafc;
+}
+
+.gov-table tr:hover {
+  background-color: #eef4fb;
+}
+
+/* Traditional Gov Box with Classic Bevels */
+.gov-box {
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 0px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.gov-box-header {
+  background: linear-gradient(180deg, #0b3866 0%, #002b49 100%);
+  color: #ffffff;
+  padding: 8px 12px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  border-bottom: 2px solid #f37021;
+}
+
+.gov-box-header-green {
+  background: linear-gradient(180deg, #138808 0%, #0f6c06 100%);
+  color: #ffffff;
+  padding: 8px 12px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  border-bottom: 2px solid #002b49;
+}
+
+.gov-button-classic {
+  background: linear-gradient(180deg, #0b3866 0%, #002b49 100%);
+  color: #ffffff;
+  border: 1px solid #001f35;
+  font-weight: 700;
+  padding: 6px 14px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.gov-button-classic:hover {
+  background: linear-gradient(180deg, #144980 0%, #083861 100%);
+}
+
+.gov-button-saffron {
+  background: linear-gradient(180deg, #FF9933 0%, #d95e14 100%);
+  color: #ffffff;
+  border: 1px solid #b34700;
+  font-weight: 700;
+  padding: 6px 14px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.gov-button-saffron:hover {
+  background: linear-gradient(180deg, #fba84d 0%, #c44f0b 100%);
+}
+
+.gov-button-green {
+  background: linear-gradient(180deg, #138808 0%, #0d5e05 100%);
+  color: #ffffff;
+  border: 1px solid #094703;
+  font-weight: 700;
+  padding: 6px 14px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.gov-button-green:hover {
+  background: linear-gradient(180deg, #18a40a 0%, #0f6c06 100%);
+}
+
+/* Accessibility Modes */
+.font-normal {
+  font-size: 14px;
+}
+
+.font-large {
+  font-size: 16px;
+}
+
+.font-xlarge {
+  font-size: 18px;
+}
+
+/* High Contrast Mode */
+.high-contrast {
+  filter: contrast(1.25);
+}
+
+.high-contrast body {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+.high-contrast .bg-white {
+  background-color: #121212 !important;
+  color: #ffffff !important;
+  border-color: #ffffff !important;
+}
+
+.high-contrast .text-slate-600,
+.high-contrast .text-slate-500,
+.high-contrast .text-slate-700 {
+  color: #e2e8f0 !important;
+}
+
+.high-contrast .border-slate-300,
+.high-contrast .border-slate-200 {
+  border-color: #ffffff !important;
+}
+
+/* Traditional Marquee Animation */
+@keyframes govMarquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+.animate-gov-marquee {
+  display: inline-block;
+  white-space: nowrap;
+  animation: govMarquee 35s linear infinite;
+}
+
+.animate-gov-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Retro Visitor Counter Digits */
+.counter-box {
+  display: inline-flex;
+  gap: 1px;
+  background-color: #1a1a1a;
+  padding: 2px 4px;
+  border: 1px solid #4a5568;
+}
+
+.counter-digit {
+  background-color: #000000;
+  color: #00ff66;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 900;
+  font-size: 12px;
+  padding: 1px 3px;
+  border: 1px solid #333333;
+}
+
+
+.high-contrast {
+  background-color: #000000 !important;
+  color: #ffff00 !important;
+}
+
+.high-contrast * {
+  background-color: #000000 !important;
+  color: #ffff00 !important;
+  border-color: #ffffff !important;
+}
+
+/* Leaflet Container in Gov layout */
+.leaflet-container {
+  font-family: inherit;
+  width: 100%;
+  height: 100%;
+  border-radius: 0px;
+  z-index: 1;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 0px;
+  border: 1px solid #0b3866;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  padding: 2px;
+}
+
+.leaflet-popup-content {
+  margin: 6px 10px;
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+/* Traditional Marquee */
+@keyframes gov-marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+.animate-gov-marquee {
+  display: inline-block;
+  white-space: nowrap;
+  animation: gov-marquee 32s linear infinite;
+}
+
+.animate-gov-marquee:hover {
+  animation-play-state: paused;
+}

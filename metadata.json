@@ -1,0 +1,8 @@
+{
+  "name": "Remix Remix Remix BHUMISETU - Land Acquisition Management Portal",
+  "description": "National Land Acquisition Management \u0026 Statutory Milestone Early-Warning Platform for Government of India",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
